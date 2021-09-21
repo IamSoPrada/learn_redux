@@ -31,6 +31,14 @@ function createStore(reducer) {
   };
 }
 
+//Типы действий записанные в константы:
+
+const ADD_TODO = "ADD_TODO";
+const REMOVE_TODO = "REMOVE_TODO";
+const TOGGLE_TODO = "TOGGLE_TODO";
+const ADD_GOAL = "ADD_GOAL";
+const REMOVE_GOAL = "REMOVE_GOAL";
+
 //Ф-ция reducer для массива todos
 // Состояние будет пустым массивом по умолчанию
 
@@ -38,11 +46,11 @@ function todos(state = [], action) {
   // Запись через switch это стандарт редакс сообщества
 
   switch (action.type) {
-    case "ADD_TODO":
+    case ADD_TODO:
       return state.concat([action.todo]);
-    case "REMOVE_TODO":
+    case REMOVE_TODO:
       return state.filter((todo) => todo.id !== action.id);
-    case "TOGGLE_TODO":
+    case TOGGLE_TODO:
       return state.map((todo) =>
         todo.id !== action.id
           ? todo
@@ -72,9 +80,9 @@ function todos(state = [], action) {
 //Ф-ция reducer для массива goals
 function goals(state = [], action) {
   switch (action.type) {
-    case "ADD_GOAL":
+    case ADD_GOAL:
       return state.concat([action.goal]);
-    case "REMOVE_GOAL":
+    case REMOVE_GOAL:
       return state.filter((goal) => goal.id !== action.id);
     default:
       return state;
