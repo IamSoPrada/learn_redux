@@ -9,6 +9,11 @@ import {
 
 import { app } from "./redux/reducers.js"; // импорт ф-ции root reducer app
 
+// State проходит следующий цикл:
+//1) Создаем хранилище
+//2) Получаем вводимые значения из ui и записываем в state
+//3) Рендерим обновленный state обратно DOM
+
 window.addEventListener("DOMContentLoaded", () => {
   // Ф-ция генерирует уникальный id
   function generateId() {
