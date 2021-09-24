@@ -10,11 +10,15 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://unpkg.com/react@16.3.0-alpha.1/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.3.0-alpha.1/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
     <title>Создание Redux</title>
   </head>
   <body>
     <main>
-      <div>
+      <div id="vanillaJS">
+        vanilla vanilla vanilla vanilla vanilla vanilla vanilla
         <h1>Список Todo</h1>
         <input type="text" id="todo" placeholder="Добавить Todo" />
         <button id="todoBtn">Добавить</button>
@@ -26,8 +30,48 @@
         <button id="goalBtn">Добавить</button>
         <ul id="goals"></ul>
       </div>
+      <hr />
+      <div id="jsx">
+        react react react react react react react react react
+        <div id="app"></div>
+      </div>
     </main>
+    <script type="text/babel">
+      const List = (props) => {
+        return (
+          <ul>
+            <li>List</li>
+          </ul>
+        );
+      };
 
+      const Todos = () => {
+        return (
+          <div>
+            <h1>Список Todos:</h1> <List />
+          </div>
+        );
+      };
+
+      const Goals = () => {
+        return (
+          <div>
+            <h1>Список Goals:</h1> <List />
+          </div>
+        );
+      };
+
+      const App = () => {
+        return (
+          <div>
+            <Todos />
+            <Goals />
+          </div>
+        );
+      };
+
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
     <script type="module" src="./index.js"></script>
   </body>
 </html>
