@@ -35,36 +35,6 @@ window.addEventListener("DOMContentLoaded", () => {
     todos.forEach(addTodoToDOM);
   });
 
-  /*  store.dispatch(
-    addTodoAction({
-      id: 0,
-      name: "Walk the dog",
-      complete: false,
-    })
-  );
-
-  store.dispatch(
-    addTodoAction({
-      id: 1,
-      name: "Wash the car",
-      complete: false,
-    })
-  );
-
-  store.dispatch(removeTodoAction(1));
-
-  store.dispatch(toggleTodoAction(0));
-
-  store.dispatch(
-    addGoalAction({
-      id: 1,
-      name: "Lose 20 pounds",
-    })
-  );
-
-  store.dispatch(removeGoalAction(0));
- */
-
   // Ф-ция генерирует и добавляет кнопку удаления
 
   function createRemoveButton(onClick) {
