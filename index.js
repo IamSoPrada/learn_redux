@@ -1,13 +1,13 @@
-import { createStore } from "./redux/store.js";
+import { createStore } from "./redux/store.js"; // ипорт хранилища состояния
 import {
   addTodoAction,
   toggleTodoAction,
   removeTodoAction,
   addGoalAction,
   removeGoalAction,
-} from "./redux/actions.js";
+} from "./redux/actions.js"; // импорт action creators
 
-import { app } from "./redux/reducers.js";
+import { app } from "./redux/reducers.js"; // импорт ф-ции root reducer app
 
 window.addEventListener("DOMContentLoaded", () => {
   // Ф-ция генерирует уникальный id
@@ -18,12 +18,12 @@ window.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  const store = createStore(app);
+  const store = createStore(app); // создаем хранилище (по умолчанию state это пустой объект с полями goals и todo, кот. по умолчанию пустые массивы)
 
   store.subscribe(() => {
-    //console.log("The new state is: ", store.getState());
-
+    // На каждое обновление состояния мы "обнуляем" дом и рендерим снова массивы полей
     const { goals, todos } = store.getState();
+
     document.getElementById("goals").innerHTML = "";
     document.getElementById("todos").innerHTML = "";
     goals.forEach(addGoalToDOM);
@@ -60,12 +60,16 @@ window.addEventListener("DOMContentLoaded", () => {
   store.dispatch(removeGoalAction(0));
  */
 
+  // Ф-ция генерирует и добавляет кнопку удаления
+
   function createRemoveButton(onClick) {
     const removeBtn = document.createElement("button");
     removeBtn.innerHTML = "X";
     removeBtn.addEventListener("click", onClick);
     return removeBtn;
   }
+
+  // Ф-ции добавляют эл-т li в ul
 
   function addTodoToDOM(todo) {
     const node = document.createElement("li");
@@ -74,11 +78,12 @@ window.addEventListener("DOMContentLoaded", () => {
     const removeBtn = createRemoveButton(() => {
       store.dispatch(removeTodoAction(todo.id));
     });
+
     node.appendChild(text);
     node.appendChild(removeBtn);
     node.style.textDecoration = todo.complete ? "line-through" : "none";
     node.addEventListener("click", () => {
-      store.dispatch(toggleTodoAction(todo.id));
+      store.dispatch(toggleTodoAction(todo.id)); // По клику диспатчим нужное событие
     });
     document.getElementById("todos").appendChild(node);
   }
@@ -94,6 +99,8 @@ window.addEventListener("DOMContentLoaded", () => {
     document.getElementById("goals").appendChild(node);
   }
 
+  //Ф-ция олучаем значение из input и добавляем в state по нужному полю
+  //Далее ф-ция subscribe рендерит обновленный state в DOM
   function addTodo() {
     const input = document.getElementById("todo");
     const name = input.value;
@@ -119,6 +126,7 @@ window.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  //По клику добавляем новый todo или goal в state
   document.getElementById("todoBtn").addEventListener("click", addTodo);
   document.getElementById("goalBtn").addEventListener("click", addGoal);
 });
