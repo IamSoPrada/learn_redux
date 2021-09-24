@@ -9,7 +9,7 @@ import {
 //Ф-ция reducer для массива todos
 // Состояние будет пустым массивом по умолчанию
 
-function todos(state = [], action) {
+export function todos(state = [], action) {
   // Запись через switch это стандарт редакс сообщества
 
   switch (action.type) {
@@ -45,7 +45,7 @@ function todos(state = [], action) {
 }
 
 //Ф-ция reducer для массива goals
-function goals(state = [], action) {
+export function goals(state = [], action) {
   switch (action.type) {
     case ADD_GOAL:
       return state.concat([action.goal]);
@@ -54,23 +54,4 @@ function goals(state = [], action) {
     default:
       return state;
   }
-}
-
-// Хранилеще состояния будем иметь такой вид, т.к у нас в состоянии
-// будут храниться массив todos и goals:
-
-/* {
-    todos: [],
-    goals: []
-  } */
-
-//Поэтому необходимо создать корневую ф-цию root reducer для всех массивов
-//которые будут в нашем состоянии и для каждого из них мы будем вызывать его собственную
-//ф-цию reducer которая будет обновлять наше состояние
-
-export function app(state = {}, action) {
-  return {
-    todos: todos(state.todos, action),
-    goals: goals(state.goals, action),
-  };
 }

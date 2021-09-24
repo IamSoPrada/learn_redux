@@ -1,4 +1,4 @@
-import { createStore } from "./redux/store.js"; // ипорт хранилища состояния
+//import { createStore } from "./redux/store.js"; // ипорт хранилища состояния
 import {
   addTodoAction,
   toggleTodoAction,
@@ -7,7 +7,7 @@ import {
   removeGoalAction,
 } from "./redux/actions.js"; // импорт action creators
 
-import { app } from "./redux/reducers.js"; // импорт ф-ции root reducer app
+import { todos, goals } from "./redux/reducers.js"; // импорт ф-ции root reducer app
 
 // State проходит следующий цикл:
 //1) Создаем хранилище
@@ -23,7 +23,12 @@ window.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  const store = createStore(app); // создаем хранилище (по умолчанию state это пустой объект с полями goals и todo, кот. по умолчанию пустые массивы)
+  const store = Redux.createStore(
+    Redux.combineReducers({
+      todos,
+      goals,
+    })
+  ); // создаем хранилище (по умолчанию state это пустой объект с полями goals и todo, кот. по умолчанию пустые массивы)
 
   store.subscribe(() => {
     // На каждое обновление состояния мы "обнуляем" дом и рендерим снова массивы полей

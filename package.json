@@ -1,0 +1,22 @@
+{
+  "name": "rebuild-redux",
+  "version": "1.0.0",
+  "description": "Изучение библиотеки Redux. Создание собственной реализации для лучшего понимания как работает дерево состояния приложения.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IamSoPrada/learn_redux.git"
+  },
+  "author": "Rustem Tarasevich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IamSoPrada/learn_redux/issues"
+  },
+  "homepage": "https://github.com/IamSoPrada/learn_redux#readme",
+  "dependencies": {
+    "redux": "^4.1.1"
+  }
+}
