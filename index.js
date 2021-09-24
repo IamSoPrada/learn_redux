@@ -7,7 +7,8 @@ import {
 } from "./redux/actions.js"; // импорт action creators
 
 import { todos, goals } from "./redux/reducers.js"; // импорт ф-ции root reducer app
-import { checker } from "./redux/middlewares.js";
+import { checker, logger } from "./redux/middlewares.js"; // middleware ф-ции
+
 // State проходит следующий цикл:
 //1) Создаем хранилище
 //2) Получаем вводимые значения из ui и записываем в state
@@ -27,7 +28,7 @@ window.addEventListener("DOMContentLoaded", () => {
       todos,
       goals,
     }),
-    Redux.applyMiddleware(checker) // Передаем вторым аргументом ф-цию middleware checker.
+    Redux.applyMiddleware(checker, logger) // Передаем вторым аргументом ф-ции middleware checker и logger.
   ); // создаем хранилище (по умолчанию state это пустой объект с полями goals и todo, кот. по умолчанию пустые массивы)
 
   store.subscribe(() => {
