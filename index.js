@@ -1,4 +1,3 @@
-//import { createStore } from "./redux/store.js"; // ипорт хранилища состояния
 import {
   addTodoAction,
   toggleTodoAction,
@@ -8,7 +7,7 @@ import {
 } from "./redux/actions.js"; // импорт action creators
 
 import { todos, goals } from "./redux/reducers.js"; // импорт ф-ции root reducer app
-
+import { checker } from "./redux/middlewares.js";
 // State проходит следующий цикл:
 //1) Создаем хранилище
 //2) Получаем вводимые значения из ui и записываем в state
@@ -27,7 +26,8 @@ window.addEventListener("DOMContentLoaded", () => {
     Redux.combineReducers({
       todos,
       goals,
-    })
+    }),
+    Redux.applyMiddleware(checker) // Передаем вторым аргументом ф-цию middleware checker.
   ); // создаем хранилище (по умолчанию state это пустой объект с полями goals и todo, кот. по умолчанию пустые массивы)
 
   store.subscribe(() => {
