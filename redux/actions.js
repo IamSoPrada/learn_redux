@@ -8,35 +8,35 @@ import {
 
 // Создаем action creators
 
-export function addTodo(todo) {
+export function addTodoAction(todo) {
   return {
     type: ADD_TODO,
     todo,
   };
 }
 
-export function toggleTodo(id) {
+export function toggleTodoAction(id) {
   return {
     type: TOGGLE_TODO,
     id,
   };
 }
 
-export function removeTodo(id) {
+export function removeTodoAction(id) {
   return {
     type: REMOVE_TODO,
     id,
   };
 }
 
-export function addGoal(goal) {
+export function addGoalAction(goal) {
   return {
     type: ADD_GOAL,
     goal,
   };
 }
 
-export function removeGoal(id) {
+export function removeGoalAction(id) {
   return {
     type: REMOVE_GOAL,
     id,
