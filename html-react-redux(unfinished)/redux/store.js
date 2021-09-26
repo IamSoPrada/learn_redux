@@ -1,4 +1,4 @@
-// Создание хранилища (store) состояния
+/* // Создание хранилища (store) состояния
 
 export function createStore(reducer) {
   // Хранилище store должно содерать следующее:
@@ -32,3 +32,4 @@ export function createStore(reducer) {
     dispatch,
   };
 }
+ */

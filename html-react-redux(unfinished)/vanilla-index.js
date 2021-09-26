@@ -4,11 +4,17 @@ import {
   removeTodoAction,
   addGoalAction,
   removeGoalAction,
-} from "./redux/actions.js"; // импорт action creators
+} from "./html-react-redux(unfinished)/redux/actions.js.js"; // импорт action creators
 
-import { todos, goals } from "./redux/reducers.js"; // импорт ф-ции root reducer app
-import { checker, logger } from "./redux/middlewares.js"; // middleware ф-ции
-
+import {
+  todos,
+  goals,
+} from "./html-react-redux(unfinished)/redux/reducers.js.js"; // импорт ф-ции root reducer app
+import {
+  checker,
+  logger,
+} from "./html-react-redux(unfinished)/redux/middlewares.js.js"; // middleware ф-ции
+import { App } from "./react-index.js";
 // State проходит следующий цикл:
 //1) Создаем хранилище
 //2) Получаем вводимые значения из ui и записываем в state
@@ -110,4 +116,5 @@ window.addEventListener("DOMContentLoaded", () => {
   //По клику добавляем новый todo или goal в state
   document.getElementById("todoBtn").addEventListener("click", addTodo);
   document.getElementById("goalBtn").addEventListener("click", addGoal);
+  ReactDOM.render(<App />, document.getElementById("app"));
 });
