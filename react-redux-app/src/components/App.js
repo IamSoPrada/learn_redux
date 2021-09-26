@@ -1,13 +1,8 @@
-import React, { Component } from 'react'
+import * as React from "react";
+import { useSelector } from "react-redux";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        Starter Code.
-      </div>
-    )
-  }
+export default function App() {
+  const store = useSelector((store) => store);
+  console.log("Store: ", store);
+  return <div>Redux Polls</div>;
 }
-
-export default App
