@@ -2,9 +2,11 @@ import * as React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Leaderboard from "./Leaderbord";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Dashboard from "./dashboard";
+import Nav from "./nav";
 import AddPoll from "./addpoll";
+import Poll from "./poll";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -17,7 +19,25 @@ export default function App() {
   console.log("Store: ", store);
   return (
     <Router>
-      <div className='container'>{loading === true ? null : <AddPoll />}</div>
+      <div className='container'>
+        <Nav />
+        {loading === true ? null : (
+          <div>
+            <Route path='/' exact>
+              <Dashboard />
+            </Route>
+            <Route path='/leaderboard'>
+              <Leaderboard />
+            </Route>
+            <Route path='/polls/:id'>
+              <Poll />
+            </Route>
+            <Route path='/add'>
+              <AddPoll />
+            </Route>
+          </div>
+        )}
+      </div>
     </Router>
   );
 }
